@@ -19,7 +19,6 @@ public class CurrencyRunner implements CommandLineRunner {
 
     private final Scanner input = new Scanner(System.in);
     private final StringBuilder sb01 = new StringBuilder();
-    private final StringBuilder sb02 = new StringBuilder();
     Set<String> codes = new HashSet<>(Set.of("USD", "BRL", "JPY", "CNY", "ARS", "RUB"));
 
     @Override
@@ -33,7 +32,7 @@ public class CurrencyRunner implements CommandLineRunner {
 
     public void menu() {
         while (true) {
-            String moedas = """
+            String codesAvalible = """
             >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
             Moedas disponiveis para conversao:
             USD - Dólar dos Estados Unidos
@@ -49,32 +48,33 @@ public class CurrencyRunner implements CommandLineRunner {
             >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
            """;
 
-            System.out.println(moedas);
+            System.out.println(codesAvalible);
             System.out.print("Digite o codigo da moeda que deseja converter: ");
             String currencyOriginal = input.next();
             System.out.print("Digite o codigo da moeda para qual deverá ser convertida: ");
             String currencyToConverted = input.next();
 
             if (currencyIsValid(currencyOriginal, currencyToConverted)) {
-                System.out.println("Digite o valor a ser convertido: ");
+                System.out.print("Digite o valor a ser convertido: ");
                 Double valueToConvert = input.nextDouble();
 
                 CurrencyData currencyData = currencyApi.obterDadosConversor(currencyOriginal);
-                double convertedValue =  Converter.conversion(valueToConvert, currencyToConverted, currencyData);
+                Double convertedValue =  Converter.conversion(valueToConvert, currencyToConverted, currencyData);
 
-                System.out.print("****************************************");
-                sb02.append("Atualmente a convesão de ")
+                System.out.println("******************************************************");
+                sb01.append("Atualmente a convesão de ")
                         .append(valueToConvert)
+                        .append("[").append(currencyOriginal).append("]")
                         .append(" ->> ")
                         .append(currencyToConverted)
                         .append(" é: ")
-                        .append(convertedValue);
+                        .append(String.format("%.2f", convertedValue));
                 System.out.println(sb01);
-                System.out.println(sb02);
-                System.out.print("****************************************");
+                System.out.println("******************************************************");
                 break;
             } else
-                System.out.println("Por favor, digite os dados corretamente");
+                System.out.println("\nERRO!\nSomente serão aceitos os códigos das moedas disponíveis");
+                System.out.println("\n! Por favor, digite o codigo novamente !\n");
         }
     }
 }
