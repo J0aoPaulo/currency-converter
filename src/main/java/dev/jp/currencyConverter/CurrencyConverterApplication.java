@@ -1,3 +1,4 @@
+// Arquivo: src/main/java/dev/jp/currencyConverter/CurrencyConverterApplication.java
 package dev.jp.currencyConverter;
 
 import dev.jp.currencyConverter.main.Main;

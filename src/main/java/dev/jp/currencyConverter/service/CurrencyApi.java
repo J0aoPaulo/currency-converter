@@ -8,10 +8,13 @@ import java.net.http.HttpResponse;
 
 public class CurrencyApi {
 
-    public String obterDadosConversor() {
+    private static final String ENDERECO = "https://v6.exchangerate-api.com/v6/";
+    private static final String API_KEY = "4542e7511121d930bff9ec74/latest/";
+
+    public String obterDadosConversor(String currencyCode) {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://v6.exchangerate-api.com/v6/4542e7511121d930bff9ec74/latest/USD"))
+                .uri(URI.create(ENDERECO + API_KEY + currencyCode))
                 .build();
         HttpResponse<String> response = null;
 
@@ -20,7 +23,6 @@ public class CurrencyApi {
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
-        String json = response.body();
-        return json;
+        return response.body();
     }
 }
