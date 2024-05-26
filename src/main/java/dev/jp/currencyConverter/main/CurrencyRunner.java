@@ -1,6 +1,7 @@
 package dev.jp.currencyConverter.main;
 
 import dev.jp.currencyConverter.model.CurrencyData;
+import dev.jp.currencyConverter.service.Converter;
 import dev.jp.currencyConverter.service.CurrencyApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -32,21 +33,42 @@ public class CurrencyRunner implements CommandLineRunner {
 
     public void menu() {
         while (true) {
-            System.out.print("Digite a sigla da moeda que será convertida: ");
-            String currencyOriginal = input.next();
-            System.out.print("Digite a sigla da moeda para qual será convertida: ");
-            String currencyConverted = input.next();
+            String moedas = """
+            >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            Moedas disponiveis para conversao:
+            USD - Dólar dos Estados Unidos
+            EUR - Euro
+            GBP - Libra Esterlina
+            JPY - Iene Japonês
+            CNY - Renminbi Chinês
+            CHF - Franco Suíço
+            CAD - Dólar Canadense
+            AUD - Dólar Australiano
+            NZD - Dólar da Nova Zelândia
+            BRL - Real Brasileiro
+            >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+           """;
 
-            if (currencyIsValid(currencyOriginal, currencyConverted)) {
-                CurrencyData convertedData = currencyApi.obterDadosConversor(currencyOriginal);
+            System.out.println(moedas);
+            System.out.print("Digite o codigo da moeda que deseja converter: ");
+            String currencyOriginal = input.next();
+            System.out.print("Digite o codigo da moeda para qual deverá ser convertida: ");
+            String currencyToConverted = input.next();
+
+            if (currencyIsValid(currencyOriginal, currencyToConverted)) {
+                System.out.println("Digite o valor a ser convertido: ");
+                Double valueToConvert = input.nextDouble();
+
+                CurrencyData currencyData = currencyApi.obterDadosConversor(currencyOriginal);
+                double convertedValue =  Converter.conversion(valueToConvert, currencyToConverted, currencyData);
 
                 System.out.print("****************************************");
                 sb02.append("Atualmente a convesão de ")
-                        .append(currencyOriginal)
+                        .append(valueToConvert)
                         .append(" ->> ")
-                        .append(currencyConverted)
+                        .append(currencyToConverted)
                         .append(" é: ")
-                        .append(convertedData.conversionRates().get(currencyConverted));
+                        .append(convertedValue);
                 System.out.println(sb01);
                 System.out.println(sb02);
                 System.out.print("****************************************");
