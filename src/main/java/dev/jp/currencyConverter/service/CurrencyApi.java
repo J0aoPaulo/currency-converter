@@ -2,7 +2,7 @@ package dev.jp.currencyConverter.service;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import dev.jp.currencyConverter.model.DadosUSD;
+import dev.jp.currencyConverter.model.CurrencyData;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +22,7 @@ public class CurrencyApi {
 
     private final Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 
-    public DadosUSD obterDadosConversor(String currencyCode) {
+    public CurrencyData obterDadosConversor(String currencyCode) {
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
@@ -36,6 +36,6 @@ public class CurrencyApi {
             throw new RuntimeException(e);
         }
         String json = response.body();
-        return gson.fromJson(json, DadosUSD.class);
+        return gson.fromJson(json, CurrencyData.class);
     }
 }
