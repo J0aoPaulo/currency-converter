@@ -12,6 +12,7 @@ A simple currency converter using Spring Boot with the main objectives below:
  - Improve my knowledge about API using Java.
  - Improve my knowledge about the Gson library and how it works.
  - Improve my knowledge about Spring Boot dependency injection.
+ - Learn how to use ExchangeRate-API.
 
 ## Project funcionalities
 
