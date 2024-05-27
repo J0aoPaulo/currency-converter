@@ -1,5 +1,7 @@
 # Currency Converter
 
+[![pt-br](https://img.shields.io/badge/lang-pt--br-green.svg)](https://github.com/J0aoPaulo/currency-converter/blob/main/README.pt-br.md)
+
 <p align=center>
   <img src="https://github.com/J0aoPaulo/currency-converter/assets/98539735/84066f49-0694-4fda-ac31-a6bda69b696d">
   <img src="https://github.com/J0aoPaulo/currency-converter/assets/98539735/84066f49-0694-4fda-ac31-a6bda69b696d">
@@ -17,4 +19,4 @@ A simple currency converter using Spring Boot with the main objectives below:
 ## Project funcionalities
 
 - [x] Ability for the user provide the currency they wish to convert and the currency it will be converted to.
-- [x] The converter allows you to convert up to 10 different currencies. 
+- [x] The converter allows you to convert up to 10 different currencies.
