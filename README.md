@@ -12,21 +12,21 @@
 
 ### 1. Create an Account on ExchangeRate-API
 
-1. Visit the ExchangeRate-API website.
+1. Visit the [ExchangeRate-API](https://www.exchangerate-api.com/) website.
 2. Sign up and create your account.
 3. After signing up, obtain your API Key from the user dashboard.
 
 ### 2. Configure the API Key
 
-1. In the directory of your project, navigate to the src/main/resources folder.
-2. Create a file named application.properties (if it doesn't exist already).
-3. Add the following line to application.properties, replacing YOUR_API_KEY_HERE with your API Key:
+1. In the directory of your project, navigate to the `src/main/resources folder`.
+2. Create a file named `application.properties` (if it doesn't exist already).
+3. Add the following line to `application.properties`, replacing `YOUR_API_KEY_HERE` with your API Key:
 
 ```properties
     api.key=YOUR_API_KEY_HERE
    ```    
-4. Then, add the following line to application.properties, 
-replacing URL_BASE_HERE with the base URL of the ExchangedRate-API.
+4. Then, add the following line to `application.properties`, 
+replacing `URL_BASE_HERE` with the base URL of the [ExchangeRate-API](https://www.exchangerate-api.com/).
 
 ```properties
     base.url=URL_BASE_HERE
