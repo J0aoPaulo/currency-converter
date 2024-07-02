@@ -39,6 +39,11 @@ Um conversor de moedas simples usando Spring Boot com os principais objetivos ab
  - Melhorar meu conhecimento sobre injeção de dependência no Spring Boot.
  - Aprender a usar a ExchangeRate-API.
 
+## Tecnologias
+- Java
+- Spring Boot
+- Gson
+
 ## Funcionalidades do projeto
 
  - [x] Permitir que o usuário forneça a moeda de origem e a moeda de destino para conversão.
